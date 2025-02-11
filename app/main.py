@@ -1,5 +1,5 @@
 import json
-import xml.etree.ElementTree as element_tree
+import xml.etree.ElementTree as Element_tree
 from abc import ABC, abstractmethod
 
 
@@ -56,12 +56,12 @@ class JsonSerializer(Serializer):
 
 class XmlSerializer(Serializer):
     def serialize(self, book: Book) -> str:
-        root = element_tree.Element("book")
-        title = element_tree.SubElement(root, "title")
+        root = Element_tree.Element("book")
+        title = Element_tree.SubElement(root, "title")
         title.text = book.title
-        content = element_tree.SubElement(root, "content")
+        content = Element_tree.SubElement(root, "content")
         content.text = book.content
-        return element_tree.tostring(root, encoding="unicode")
+        return Element_tree.tostring(root, encoding="unicode")
 
 
 def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
